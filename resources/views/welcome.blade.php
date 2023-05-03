@@ -1,5 +1,5 @@
 <x-app-layout>
-    <section class="bg-cover" style="background-image: url({{asset('img/home/imagen.jpg')}})">
+    <section class="bg-cover" style="background-image: url({{asset('img/home/foto1.jpg')}})">
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-36">
         <div class="w-full md:w-3/4 lg:w-1/2"> 
@@ -9,7 +9,7 @@
 <!-- This is an example component -->
         </div>
 
-        <div class="pt-2 relative mx-auto text-gray-600">
+        <div class="pt-2 relative mx-auto text-white-600">
             <input class="w-full border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
               type="search" name="search" placeholder="Search">
     
@@ -29,7 +29,7 @@
         <div class="max-w 7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-8">
             <article>
                 <figure>
-                    <img class="rounded-xl h-36 w-full object-cover" src="{{asset('img/home/imagen2.jpg')}}" alt="">
+                    <img class="rounded-xl h-36 w-full object-cover" src="{{asset('img/home/foto2.jpg')}}" alt="">
                 </figure>
     
                 <header class="mt-2">
@@ -42,7 +42,7 @@
     
             <article>
                 <figure>
-                    <img  class="rounded-xl h-36 w-full object-cover" src="{{asset('img/home/imagen3.jpg')}}" alt="">
+                    <img  class="rounded-xl h-36 w-full object-cover" src="{{asset('img/home/foto3.jpg')}}" alt="">
                 </figure>
     
                 <header class="mt-2">
@@ -54,7 +54,7 @@
     
             <article>
                 <figure>
-                    <img class="rounded-xl h-36 w-full object-cover" src="{{asset('img/home/imagen4.jpg')}}" alt="">
+                    <img class="rounded-xl h-36 w-full object-cover" src="{{asset('img/home/foto4.jpg')}}" alt="">
                 </figure>
     
                 <h1 class="text-center text-xl text-gray-700"> Acerca de </h1>
@@ -65,7 +65,7 @@
     
             <article>
                 <figure>
-                    <img class="rounded-xl h-36 w-full object-cover" src="{{asset('img/home/imagen5.jpg')}}" alt="">
+                    <img class="rounded-xl h-36 w-full object-cover" src="{{asset('img/home/foto5.jpg')}}" alt="">
                 </figure>
                 <h1 class="text-center text-xl text-gray-700"> Contacto </h1>
             </header>
