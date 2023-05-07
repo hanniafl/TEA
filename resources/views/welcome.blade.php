@@ -9,7 +9,7 @@
 <!-- This is an example component -->
         </div>
 
-        <div class="pt-2 relative mx-auto text-white-600">
+        <div class="pt-2 relative mx-auto text-gray-600">
             <input class="w-full border-2 border-gray-300 bg-white h-10 px-5 pr-16 rounded-lg text-sm focus:outline-none"
               type="search" name="search" placeholder="Search">
     
@@ -86,6 +86,43 @@
             Catalogo de cursos
           </a>
         </div>
+    </section>
+
+    <section class="mt-24">
+        <h1 class="text-center text-3xl text-gray-600"> ULTIMOS CURSOS </h1>
+        <p class="text-center text-gray-500 text-sm -scroll-mb-6"> Ultimos cursos actualizados</p>
+    
+        @foreach ($courses as $course)
+            <article class="bg-white shadow-lg rounded overflow-hidden">
+                <a class="h-36 w-full object-cover" img src="{{Storage::url($course->url)}}" alt="">
+    
+                <div class="px-6 py-4">
+                    <h1 class="text-xl text-gray-700 mb-2 leading-6">{{Str::limit($course->title, 40)}}</h1>
+                    <p class="text-gray-600 text-sm mb-2">Prof: {{$course->teacher->name}}</p>
+                 
+                    <div class ="flex">
+                    <ul class="flex text-sm">
+
+                    </ul>
+
+                    <p class="text-sm text-gray-500 ml-auto">
+                        <i class="fas fa-users"></i>
+                         ({{$course->students_count}})
+                     </p>
+                    </div>
+
+                    <a href="{{route('courses.show', $course)}}" class="w-full mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        
+                        Curso
+                      </a>
+                </div>
+            </article>
+                
+            @endforeach
+    
+        </div>
+    
+    
     </section>
     
     
