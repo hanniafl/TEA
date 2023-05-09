@@ -27,9 +27,8 @@ Route::middleware([
     })->name('dashboard');
 });
 
-Route::get('cursos', function (){
-    return "Aqui se mostrara la lista de cursos";
-})->name('courses.index');
+Route::get('cursos', [CourseController::class, 'index'])->name('courses.index');
+
 
 Route::get('cursos/{course}', function ($course){
     return "Aqui se va a mostrar la informacion del curso";
