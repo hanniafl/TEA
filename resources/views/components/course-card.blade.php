@@ -1,11 +1,11 @@
 @props(['course'])
 
 
-<article class="bg-white shadow-lg rounded overflow-hidden">
+<article class="card">
     <img class="h-36 w-full object-cover" src="{{Storage::url($course->image->url)}}" alt="">
 
-    <div class="px-6 py-4">
-        <h1 class="text-xl text-gray-700 mb-2 leading-6">{{Str::limit($course->title, 40)}}</h1>
+    <div class="card-body">
+        <h1 class="card-tittle">{{Str::limit($course->title, 40)}}</h1>
         <p class="text-gray-500 text-sm mb-2">Prof: {{$course->teacher->name}}</p>
     
         <div class ="flex">
@@ -34,7 +34,7 @@
             </p>
         </div>
 
-        <a href="{{route('courses.show', $course)}}" class="block text-center w-full mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+        <a href="{{route('courses.show', $course)}}" class="mt-4 btn btn-primary btn-block">
             Curso
         </a>
     </div>
