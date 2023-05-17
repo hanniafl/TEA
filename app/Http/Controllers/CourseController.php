@@ -28,4 +28,6 @@ class CourseController extends Controller
 
          return redirect()->route('course.status', $course);
      }
+
+    
 }

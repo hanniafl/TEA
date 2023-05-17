@@ -2,7 +2,7 @@
     <section class="bg-gray-700 py-12 mb-12">
         <div class="container grid grid-cols-1 lg:grid-cols-2 gap-6">
             <figure>
-                <img class="h-60 w-full object-cover" src="{{Storage::url($course->image->url)}}" alt="">
+                <img class="h-60 w-full object-cover" src="{{Storage::url($course->url)}}" alt="">
             </figure>
 
             <div class="text-white">
@@ -90,7 +90,7 @@
 
                     @can('enrolled', $course)
 
-                        <a class="btn btn-danger btn-block mt-4" href="{{route('course.status', $course)}}">Continuar con el curso</a>
+                        <a class="btn btn-danger btn-block mt-4" href="{{route('courses.status', $course)}}">Continuar con el curso</a>
 
                     @else
 
@@ -106,7 +106,7 @@
             <aside class="hidden lg:block">
                 @foreach ($similares as $similar)
                     <article class="flex mb-6">
-                        <img class="h-32 w-40 object-cover" src="{{Storage::url($similar->image->url)}}" alt="">
+                        <img class="h-32 w-40 object-cover" src="{{Storage::url($similar->url)}}" alt="">
 
                         <div class="ml-3">
                             <h1>
