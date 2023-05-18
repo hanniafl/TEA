@@ -1,7 +1,7 @@
 <div class="mt-8">
     <div class="container grid grid-cols-3">
         <div class="col-span-2">
-            {!!$current->iframe!!}
+            {{$current}}
             {{$current->name}}
         </div>
 

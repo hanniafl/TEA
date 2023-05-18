@@ -2,7 +2,7 @@
 
 
 <article class="card">
-    <img class="h-36 w-full object-cover" src="{{Storage::url($course->url)}}" alt="">
+    <img class="h-36 w-full object-cover" src="{{Storage::url($course->image->url)}}" alt="">
 
     <div class="card-body">
         <h1 class="card-title">{{Str::limit($course->title, 40)}}</h1>
