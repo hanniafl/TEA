@@ -44,7 +44,19 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'slug' => 'required|unique:courses',
+            'subtitle' => 'required',
+            'description' => 'required',
+            'category_id' => 'required',
+            'level_id' => 'required',
+            'price_id' => 'required',
+        ]);
+
+        $course = Course::create($request->all());
+
+        return redirect()->route('instructor.courses.edit', $course);
     }
 
     /**
