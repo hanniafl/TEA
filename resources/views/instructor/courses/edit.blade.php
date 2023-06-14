@@ -35,7 +35,7 @@
                     @include('instructor.courses.partials.form')
 
                     <div class="flex justify-end">
-                        {!! Form::submit('Actualizar informacion', ['class' => 'btn btn-primary']) !!}
+                        {!! Form::submit('Actualizar informacion', ['class' => 'btn btn-primary bg-blue-500 text-white']) !!}
                     </div>
 
                 {!! Form::close() !!}

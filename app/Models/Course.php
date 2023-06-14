@@ -16,7 +16,7 @@ class Course extends Model
     const REVISION = 2;
     const PUBLICADO = 3;
 
-    public function getRatingAtribute(){
+    public function getRatingAttribute(){
 
         if($this->reviews_count){
             return round($this->reviews->avg('rating'), 1);

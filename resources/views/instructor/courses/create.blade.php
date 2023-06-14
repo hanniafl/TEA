@@ -12,7 +12,7 @@
                     @include('instructor.courses.partials.form')
 
                     <div class="flex justify-end">
-                        {!! Form::submit('Crear Nuevo Curso', ['class' => 'btn btn-primary']) !!}
+                        {!! Form::submit('Crear Nuevo Curso', ['class' => 'btn btn-primary bg-blue-500 text-white']) !!}
                     </div>
                 {!! Form::close() !!}
             </div>
