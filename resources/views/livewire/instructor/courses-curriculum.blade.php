@@ -18,18 +18,20 @@
                     @enderror
                 </form> 
 
-                @else
+            @else
+            
                 <header class="flex justify-between items-center">
                     <h1 class="cursor-pointer"> <strong> Seccion: </strong> {{$item->name}}</h1>
 
                     <div>
                         <i class="fas fa-edit cursor-pointer text-blue-500" wire:click="edit({{$item}})"></i>
                         <i class="fas fa-eraser cursor-pointer text-red-500" wire:click="destroy({{$item}})"></i>
-
-                        
-
                     </div>
                 </header>
+
+                <div>
+                    @livewire('instructor.courses-lesson', ['section' => $item], key($item->id))
+                </div>
             @endif
     </article>
         
