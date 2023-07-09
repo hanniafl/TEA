@@ -105,8 +105,8 @@
 
             <aside class="hidden lg:block">
                 @foreach ($similares as $similar)
+                    <img class="h-32 w-40 object-cover" src="{{Storage::url($similar->image->url)}}" alt="">
                     <article class="flex mb-6">
-                        <img class="h-32 w-40 object-cover" src="{{Storage::url($similar->image->url)}}" alt="">
 
                         <div class="ml-3">
                             <h1>
