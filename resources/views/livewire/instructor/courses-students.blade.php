@@ -1,14 +1,10 @@
 <div>
-    <x-slot name="course">
-        {{$course->slug}}
-
-    </x-slot>
 
     <h1 class="text-2xl font-bold mb-4"> ESTUDIANTES DEL CURSO</h1>
 
     <x-table-responsive>
         <div class="px-6 py-4">
-            <input wire:model="search" class="form-input w-full shadow-sm" placeholder="Buscar Curso">
+            <input wire:model="search" class="form-input w-full shadow-sm" placeholder="Ingrese el nombre de un estudiante ...">
 
         </div>
 

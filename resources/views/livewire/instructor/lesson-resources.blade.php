@@ -20,7 +20,7 @@
                 <form wire:submit.prevent="save">
                     <div class="flex items-center">
                         <input wire:model="file" type="file" class="form-input flex-1">
-                        <button type="submit" class="btn bg-blue-500 text-white text-sm ml-2">Guardar</button>
+                        <button type="submit" class="btn btn-primary bg-blue-500 text-white text-sm ml-2">Guardar</button>
                     </div>
                     
                     <div class="text-blue-500 font-bold mt-1" wire:loading wire:target="file">

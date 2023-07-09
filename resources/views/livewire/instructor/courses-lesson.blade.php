@@ -34,8 +34,8 @@
                         @enderror
 
                         <div class="mt-4 flex justify-end">
-                            <button type="button" class="btn bg-blue-500 text-white" wire:click="cancel">Cancelar</button>
-                            <button type="submit" class="btn bg-red-500 text-white ml-2" >Actualizar</button>
+                            <button type="button" class="btn btn-primary bg-blue-500 text-white" wire:click="cancel">Cancelar</button>
+                            <button type="submit" class="btn btn-danger bg-red-500 text-white ml-2" >Actualizar</button>
                         </div>
                     </form>
                 @else

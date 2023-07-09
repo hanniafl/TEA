@@ -46,7 +46,7 @@
                 @enderror
 
                 <div class="flex justify-end mt-2">
-                    <button type="submit" class="btn btn-primary"> Agregar meta </button>
+                    <button type="submit" class="btn btn-primary bg-blue-500"> Agregar meta </button>
                 </div>
             </form>
         </div>

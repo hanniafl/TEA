@@ -17,8 +17,8 @@
                         @enderror
 
                         <div class="flex justify-end">
-                            <button wire:click="destroy" type="button" class="btn bg-red-500 text-white text-sm">Eliminar</button>
-                            <button type="submit" class="btn bg-blue-500 text-white text-sm ml-2">Actualizar</button>
+                            <button wire:click="destroy" type="button" class="btn btn-danger bg-red-500 text-white text-sm">Eliminar</button>
+                            <button type="submit" class="btn btn-primary bg-blue-500 text-white text-sm ml-2">Actualizar</button>
                         </div>
                     </form>
 
@@ -32,7 +32,7 @@
                         @enderror
 
                         <div class="flex justify-end">
-                            <button wire:click="store" class="btn bg-blue-500 text-white text-sm ml-2">Agregar</button>
+                            <button wire:click="store" class="btn btn-primary bg-blue-500 text-white text-sm ml-2">Agregar</button>
                         </div>
                     </div>
 
