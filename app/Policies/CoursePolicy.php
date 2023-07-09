@@ -39,5 +39,13 @@ class CoursePolicy
             return false;
         }
     }
+
+    public function revision(User $user, Course $course){
+        if ($course->status == 2) {
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
 
