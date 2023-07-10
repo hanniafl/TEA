@@ -47,6 +47,12 @@
                         <li class="leading-7 mb-1 border-l-4 @routeIs('instructor.courses.students', $course) border-indigo-400 @else border-transparent @endif pl-2">
                             <a href="{{route('instructor.courses.students', $course)}}">Estudiantes</a>
                         </li>
+
+                        @if ($course->observation)
+                            <li class="leading-7 mb-1 border-l-4 @routeIs('instructor.courses.observation', $course) border-indigo-400 @else border-transparent @endif pl-2">
+                                <a href="{{route('instructor.courses.observation', $course)}}">Observaciones</a>
+                            </li>
+                        @endif
                     </ul>
 
                     @switch($course->status)

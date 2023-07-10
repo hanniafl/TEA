@@ -18,4 +18,6 @@ Route::get('courses/{course}/students',CoursesStudents::class)->middleware('can:
 
 Route::post('courses/{course}/status', [CourseController::class, 'status'])->name('courses.status');
 
+Route::get('courses/{course}/observation', [CourseController::class, 'observation'])->name('courses.observation');
+
 
