@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\LevelController;
+Use App\Http\Controllers\Admin\PriceController;
 
 Route::get('', [HomeController::class, 'index'])->middleware('can:Ver Dashboard')->name('home');
 
@@ -18,6 +19,8 @@ Route::resource('users', UserController::class)->only(['index', 'edit', 'update'
 Route::resource('categories', CategoryController::class)->names('categories');
 
 Route::resource('levels', LevelController::class)->names('levels');
+
+Route::resource('prices', PriceController::class)->names('prices');
 
 Route::get('courses', [CourseController::class, 'index'])->name('courses.index');
 
