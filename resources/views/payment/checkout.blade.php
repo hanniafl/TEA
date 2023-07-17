@@ -13,7 +13,7 @@
                 </article>
 
                 <div class="flex justify-end mt-2 mb-4">
-                    <a href="" class="btn btn-primary">Comprar este curso</a>
+                    <a href="{{route('payment.pay', $course)}}" class="btn btn-primary">Comprar este curso</a>
                 </div>
 
                 <hr>
