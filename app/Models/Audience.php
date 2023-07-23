@@ -8,11 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Audience extends Model
 {
     use HasFactory;
-
     protected $guarded = ['id'];
 
+    use HasFactory;
     //Relacion uno a muchos inversa
     public function course(){
         return $this->belongsTo('App\Models\Course');
     }
+
 }

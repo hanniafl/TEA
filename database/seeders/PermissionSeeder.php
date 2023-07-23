@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 use Spatie\Permission\Models\Permission;
@@ -17,47 +16,50 @@ class PermissionSeeder extends Seeder
     public function run()
     {
         Permission::create([
-            'name' => 'Crear Cursos'
+            'name'=>'Crear cursos', 
         ]);
 
         Permission::create([
-            'name' => 'Leer Cursos'
+            'name'=>'Leer cursos', 
         ]);
 
         Permission::create([
-            'name' => 'Actualizar Cursos'
+            'name'=>'Actualizar cursos', 
         ]);
 
         Permission::create([
-            'name' => 'Eliminar Cursos'
+            'name'=>'Eliminar cursos', 
+        ]);
+
+
+        Permission::create([
+            'name'=>'Ver dashboard', 
+        ]);
+
+
+        Permission::create([
+            'name'=>'Crear role', 
         ]);
 
         Permission::create([
-            'name' => 'Ver Dashboard'
+            'name'=>'Listar role', 
         ]);
 
         Permission::create([
-            'name' => 'Crear Role'
+            'name'=>'Editar role', 
         ]);
 
         Permission::create([
-            'name' => 'Listar Role'
+            'name'=>'Eliminar role', 
         ]);
 
         Permission::create([
-            'name' => 'Editar Role'
+            'name'=>'Leer usuarios', 
         ]);
 
         Permission::create([
-            'name' => 'Eliminar Role'
+            'name'=>'Editar usuarios', 
         ]);
 
-        Permission::create([
-            'name' => 'Leer Usuarios'
-        ]);
-
-        Permission::create([
-            'name' => 'Editar Usuarios'
-        ]);
     }
 }

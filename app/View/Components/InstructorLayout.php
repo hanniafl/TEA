@@ -6,7 +6,8 @@ use Illuminate\View\Component;
 
 class InstructorLayout extends Component
 {
-    public $course;
+
+   public $course;
     /**
      * Create a new component instance.
      *

@@ -3,29 +3,22 @@
     <div class="container py-8">
         <div class="card">
             <div class="card-body">
-                <h1 class="text-2xl font-bold">CREAR NUEVO CURSO</h1>
+                <h1 class="text-2x1 font-bold">CREAR NUEVO CURSO</h1>
 
                 <hr class="mt-2 mb-6">
+                {!! Form::open(['route' => 'instructor.courses.store','files' => true,'autocomplete' => 'off']) !!}
+                {!! Form::hidden('user_id',auth()->user()->id) !!}
+                @include('instructor.courses.partials.form')
 
-                {!! Form::open(['route' => 'instructor.courses.store', 'files' => true, 'autocomplete' => 'off']) !!}
-
-                    {!! Form::hidden('user_id', auth()->user()->id) !!}    
-
-                    @include('instructor.courses.partials.form')
-
-                    <div class="flex justify-end">
-                        {!! Form::submit('Crear Nuevo Curso', ['class' => 'btn btn-primary bg-blue-500 text-white cursor-pointer']) !!}
-                    </div>
+                <div class="flex justify-end">
+                    {!! Form::submit('Crear nuevo Curso',['class' => 'btn btn-primary cursor-pointer']) !!}
+                </div>
                 {!! Form::close() !!}
             </div>
         </div>
+
     </div>
-
-    <x-slot name="js">
-
-        <script src="https://cdn.ckeditor.com/ckeditor5/38.0.1/classic/ckeditor.js"></script>
-        <script src="{{asset('js/instructor/courses/form.js')}}"></script>
-
-    </x-slot>
+    <script src="https://cdn.ckeditor.com/ckeditor5/24.0.0/classic/ckeditor.js"></script>
+    <script src="{{asset('js/instructor/courses/form.js')}}"></script>
 
 </x-app-layout>

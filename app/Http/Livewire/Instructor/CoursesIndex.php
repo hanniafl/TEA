@@ -2,10 +2,11 @@
 
 namespace App\Http\Livewire\Instructor;
 
-use Livewire\Component;
-
 use App\Models\Course;
+
+use Livewire\Component;
 use Livewire\WithPagination;
+
 
 class CoursesIndex extends Component
 {

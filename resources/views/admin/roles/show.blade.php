@@ -3,7 +3,7 @@
 @section('title', 'TEA')
 
 @section('content_header')
-    <h1>TEA</h1>
+    <h1>TEA admin panel.</h1>
 @stop
 
 @section('content')

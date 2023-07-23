@@ -8,10 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Description extends Model
 {
     use HasFactory;
-
     protected $guarded = ['id'];
 
-    //Relacion uno a uno inversa
+    //relacion uno a uno inversa
+
     public function lesson(){
         return $this->belongsTo('App\Models\Lesson');
     }

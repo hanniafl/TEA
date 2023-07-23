@@ -8,19 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class Lesson extends Model
 {
     use HasFactory;
-
     protected $guarded = ['id'];
 
     public function getCompletedAttribute(){
-        return $this->users->contains(auth()->user()->id);
+      return  $this->users->contains(auth()->user()->id);
     }
 
-    //Realcion uno a uno
+    //Relacion uno a uno
+
     public function description(){
         return $this->hasOne('App\Models\Description');
     }
 
-    //Realcion uno a muchos inversa
+    //Relacion uno a muchos inversa
     public function section(){
         return $this->belongsTo('App\Models\Section');
     }
@@ -29,23 +29,24 @@ class Lesson extends Model
         return $this->belongsTo('App\Models\Platform');
     }
 
-    //Relacion muchos a muchos 
+    //Relacion muchos a muchos
     public function users(){
         return $this->belongsToMany('App\Models\User');
     }
 
     //Relacion uno a uno polimorfica
+
     public function resource(){
         return $this->morphOne('App\Models\Resource', 'resourceable');
     }
 
     //Relacion uno a muchos polimorfica
+
     public function comments(){
         return $this->morphMany('App\Models\Comment', 'commentable');
     }
 
     public function reactions(){
-        return $this->morphMany('App\Models\Reaction', 'reactionable');
+    return $this->morphMany('App\Models\Reaction', 'reactionable');
     }
-
 }

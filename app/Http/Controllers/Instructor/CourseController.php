@@ -2,27 +2,26 @@
 
 namespace App\Http\Controllers\Instructor;
 
+
+
 use App\Http\Controllers\Controller;
 use App\Models\Category;
-use Illuminate\Http\Request;
-
-use App\Models\Course;
 use App\Models\Level;
 use App\Models\Price;
-
+use Illuminate\Http\Request;
+use App\Models\Course;
 use Illuminate\Support\Facades\Storage;
 
 class CourseController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('can:Leer Cursos')->only('index');
-        $this->middleware('can:Crear Cursos')->only('create', 'store');
-        $this->middleware('can:Actualizar Cursos')->only('edit', 'update', 'goals');
-        $this->middleware('can:Eliminar Cursos')->only('destroy');
-    }
 
+    public function __construct(){
+        $this->middleware('can:Leer cursos')->only('index');
+        $this->middleware('can:Crear cursos')->only('create','store');
+        $this->middleware('can:Actualizar cursos')->only('edit','update','goals');
+        $this->middleware('can:Eliminar cursos')->only('destroy');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -30,6 +29,7 @@ class CourseController extends Controller
      */
     public function index()
     {
+        //
         return view('instructor.courses.index');
     }
 
@@ -40,11 +40,12 @@ class CourseController extends Controller
      */
     public function create()
     {
-        $categories = Category::pluck('name', 'id');
-        $levels = Level::pluck('name', 'id');
-        $prices = Price::pluck('name', 'id');
+        
+        $categories = Category::pluck('name','id');
+        $levels = Level::pluck('name','id');
+        $prices = Price::pluck('name','id');
 
-        return view('instructor.courses.create', compact('categories', 'levels', 'prices'));
+        return view('instructor.courses.create',compact('categories','levels','prices'))->with('info','El curso se creo con exito');
     }
 
     /**
@@ -55,7 +56,8 @@ class CourseController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+
+       $request->validate([
             'title' => 'required',
             'slug' => 'required|unique:courses',
             'subtitle' => 'required',
@@ -66,17 +68,20 @@ class CourseController extends Controller
             'file' => 'image'
         ]);
 
-        $course = Course::create($request->all());
 
+        $course = Course::create($request->all());
         if($request->file('file')){
             $url = Storage::put('courses', $request->file('file'));
 
-            $course->image()->create([
+          $course->image()->create([
                 'url' => $url
             ]);
         }
+       
 
-        return redirect()->route('instructor.courses.edit', $course);
+        
+
+        return redirect()->route('instructor.courses.edit',$course)->with('info','El curso se actualizo con exito');
     }
 
     /**
@@ -87,7 +92,8 @@ class CourseController extends Controller
      */
     public function show(Course $course)
     {
-        return view('instructor.courses.show', compact('course'));
+        //
+        return view('instructor.courses.show',compact('course'));
     }
 
     /**
@@ -98,14 +104,14 @@ class CourseController extends Controller
      */
     public function edit(Course $course)
     {
+        $this->authorize('dicataded', $course);
+        $categories = Category::pluck('name','id');
+        $levels = Level::pluck('name','id');
+        $prices = Price::pluck('name','id');
 
-        $this->authorize('dicatated', $course);
 
-        $categories = Category::pluck('name', 'id');
-        $levels = Level::pluck('name', 'id');
-        $prices = Price::pluck('name', 'id');
-
-        return view('instructor.courses.edit', compact('course', 'categories', 'levels', 'prices'));
+        
+        return view('instructor.courses.edit',compact('course','categories','levels','prices'))->with('info','El curso se actualizo con exito');
     }
 
     /**
@@ -117,9 +123,7 @@ class CourseController extends Controller
      */
     public function update(Request $request, Course $course)
     {
-
-        $this->authorize('dicatated', $course);
-
+        $this->authorize('dicataded', $course);
         $request->validate([
             'title' => 'required',
             'slug' => 'required|unique:courses,slug,' . $course->id,
@@ -130,14 +134,14 @@ class CourseController extends Controller
             'price_id' => 'required',
             'file' => 'image'
         ]);
-
         $course->update($request->all());
 
         if($request->file('file')){
-            $url = Storage::put('courses', $request->file('file'));
+            $url = Storage::put('courses',$request->file('file'));
 
-            if ($course->image) {
+            if($course->image){
                 Storage::delete($course->image->url);
+
 
                 $course->image->update([
                     'url' => $url
@@ -149,7 +153,8 @@ class CourseController extends Controller
             }
         }
 
-        return redirect()->route('instructor.courses.edit', $course);
+        return redirect()->route('instructor.courses.edit',$course)->with('info','El curso se actualizo con exito');
+
     }
 
     /**
@@ -163,24 +168,22 @@ class CourseController extends Controller
         //
     }
 
-    public function goals(Course $course)
-    {
-        $this->authorize('dicatated', $course);
-
-        return view('instructor.courses.goals', compact('course'));
+    public function goals(Course $course){
+        $this->authorize('dicataded', $course);
+        return view('instructor.courses.goals', compact('course'))->with('info','Se añadieron las metas con exito');
     }
 
     public function status(Course $course){
         $course->status = 2;
         $course->save();
 
-        if ($course->observation) {
+        if($course->observation){
             $course->observation->delete();
         }
 
-        return redirect()->route('instructor.courses.edit', $course);
+        return redirect()->route('instructor.courses.edit',$course);
     }
-
+    
     public function observation(Course $course){
         return view('instructor.courses.observation', compact('course'));
     }

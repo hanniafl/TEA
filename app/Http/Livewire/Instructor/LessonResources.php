@@ -13,8 +13,8 @@ class LessonResources extends Component
 {
     use WithFileUploads;
 
-    public $lesson, $file;
-
+    public $lesson,$file;
+    
     public function mount(Lesson $lesson){
         $this->lesson = $lesson;
     }
@@ -26,7 +26,7 @@ class LessonResources extends Component
 
     public function save(){
         $this->validate([
-            'file' => 'required'
+            'file' =>'required'
         ]);
 
         $url = $this->file->store('resources');
@@ -37,15 +37,14 @@ class LessonResources extends Component
 
         $this->lesson = Lesson::find($this->lesson->id);
     }
+    //checar funcion download
+    public function download(){
+        return response()->download(storage_path('app/' . $this->lesson->resource->url));
+    }
 
     public function destroy(){
         Storage::delete($this->lesson->resource->url);
         $this->lesson->resource->delete();
-        
         $this->lesson = Lesson::find($this->lesson->id);
-    }
-
-    public function download(){
-        return response()->download(storage_path('app/public/' . $this->lesson->resource->url));
     }
 }

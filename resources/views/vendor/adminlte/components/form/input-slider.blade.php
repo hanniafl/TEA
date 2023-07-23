@@ -1,16 +1,10 @@
 @extends('adminlte::components.form.input-group-component')
 
-{{-- Set errors bag internallly --}}
-
-@php($setErrorsBag($errors ?? null))
-
-{{-- Set input group item section --}}
-
 @section('input_group_item')
 
     {{-- Input Slider --}}
     <input id="{{ $id }}" name="{{ $name }}"
-        {{ $attributes->merge(['class' => $makeItemClass()]) }}>
+        {{ $attributes->merge(['class' => $makeItemClass($errors->first($errorKey))]) }}>
 
 @overwrite
 
@@ -24,38 +18,30 @@
 
         // Check for disabled attribute (alternative to data-slider-enable).
 
-        @if($attributes->has('disabled'))
+        @isset($attributes['disabled'])
             usrCfg.enabled = false;
-        @endif
+        @endisset
 
         // Check for min, max and step attributes (alternatives to
         // data-slider-min, data-slider-max and data-slider-step).
 
-        @if($attributes->has('min'))
-            usrCfg.min = Number( @json($attributes['min']) );
-        @endif
+        @isset($attributes['min'])
+            usrCfg.min = {{ $attributes['min'] }};
+        @endisset
 
-        @if($attributes->has('max'))
-            usrCfg.max = Number( @json($attributes['max']) );
-        @endif
+        @isset($attributes['max'])
+            usrCfg.max = {{ $attributes['max'] }};
+        @endisset
 
-        @if($attributes->has('step'))
-            usrCfg.step = Number( @json($attributes['step']) );
-        @endif
+        @isset($attributes['step'])
+            usrCfg.step = {{ $attributes['step'] }};
+        @endisset
 
         // Check for value attribute (alternative to data-slider-value).
-        // Also, add support to auto select the previous submitted value.
 
-        @if($attributes->has('value') || ($errors->any() && $enableOldSupport))
-
-            let value = @json($getOldValue($errorKey, $attributes['value']));
-
-            if (value) {
-                value = value.split(",").map(Number);
-                usrCfg.value = value.length > 1 ? value : value[0];
-            }
-
-        @endif
+        @isset($attributes['value'])
+            usrCfg.value = {{ $attributes['value'] }};
+        @endisset
 
         // Initialize the plugin.
 

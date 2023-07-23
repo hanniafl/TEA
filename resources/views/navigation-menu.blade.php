@@ -1,26 +1,29 @@
 @php
-    $nav_links = [
-        [
-            'name' => 'Home',
-            'route' => route('home'),
-            'active' => request()->routeIs('home')
-        ],
-        [
-            'name' => 'Cursos',
-            'route' => route('courses.index'),
-            'active' => request()->routeIs('courses.*')
-        ]
-    ];
-@endphp
 
+ $nav_links=[
+     [
+         'name' => 'Home',
+       'route' =>route('home') ,
+       'active' =>request()->routeIs('home')
+     ],
+     [
+         'name' => 'Cursos',
+         'route' => route('courses.index'),
+         'active' =>request()->routeIs('courses.*')
+     ]
+  
+ ]
+
+@endphp
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100 shadow">
+ 
+ 
     <!-- Primary Navigation Menu -->
     <div class="container">
-
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
-                <div class="shrink-0 flex items-center">
+                <div class="flex-shrink-0 flex items-center">
                     <a href="{{ route('home') }}">
                         <x-jet-application-mark class="block h-9 w-auto" />
                     </a>
@@ -28,15 +31,11 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-
-                    @foreach ($nav_links as $nav_link)
-                        
-                        <x-jet-nav-link href="{{ $nav_link['route'] }}" :active="$nav_link['active']">
-                            {{ $nav_link['name'] }}
-                        </x-jet-nav-link>
-
+                    @foreach($nav_links as $nav_link)
+                    <x-jet-nav-link href="{{ $nav_link['route'] }}" :active="$nav_link['active']">
+                        {{ $nav_link['name'] }}
+                    </x-jet-nav-link>
                     @endforeach
-
                 </div>
             </div>
 
@@ -50,8 +49,8 @@
                                     <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:bg-gray-50 hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition">
                                         {{ Auth::user()->currentTeam->name }}
 
-                                        <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
+                                        <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M10 3a1 1 0 01.707.293l3 3a1 1 0 01-1.414 1.414L10 5.414 7.707 7.707a1 1 0 01-1.414-1.414l3-3A1 1 0 0110 3zm-3.707 9.293a1 1 0 011.414 0L10 14.586l2.293-2.293a1 1 0 011.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
                                         </svg>
                                     </button>
                                 </span>
@@ -93,21 +92,21 @@
 
                 <!-- Settings Dropdown -->
                 <div class="ml-3 relative">
-
-                    @auth 
+                    @auth
                         <x-jet-dropdown align="right" width="48">
                             <x-slot name="trigger">
+
                                 @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                                     <button class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
                                         <img class="h-8 w-8 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
                                     </button>
                                 @else
                                     <span class="inline-flex rounded-md">
-                                        <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition">
+                                        <button type="button" class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition">
                                             {{ Auth::user()->name }}
 
-                                            <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                                            <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                                             </svg>
                                         </button>
                                     </span>
@@ -123,22 +122,17 @@
                                 <x-jet-dropdown-link href="{{ route('profile.show') }}">
                                     Perfil
                                 </x-jet-dropdown-link>
-
-                                @can('Leer Cursos')
-
+                                @can('Leer cursos')
                                     <x-jet-dropdown-link href="{{ route('instructor.courses.index') }}">
-                                        Instructor
+                                    Instructor
                                     </x-jet-dropdown-link>
-                                    
                                 @endcan
-
-                                @can('Ver Dashboard')
-
+                                @can('Ver dashboard')
                                     <x-jet-dropdown-link href="{{ route('admin.home') }}">
-                                        Administrador
+                                    Administrador
                                     </x-jet-dropdown-link>
-                                    
                                 @endcan
+                                  
 
                                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                                     <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">
@@ -149,20 +143,23 @@
                                 <div class="border-t border-gray-100"></div>
 
                                 <!-- Authentication -->
-                                <form method="POST" action="{{ route('logout') }}" x-data>
+                                <form method="POST" action="{{ route('logout') }}">
                                     @csrf
 
                                     <x-jet-dropdown-link href="{{ route('logout') }}"
-                                            @click.prevent="$root.submit();">
+                                            onclick="event.preventDefault();
+                                                    this.closest('form').submit();">
                                         {{ __('Log Out') }}
                                     </x-jet-dropdown-link>
                                 </form>
                             </x-slot>
                         </x-jet-dropdown>
-                    @else
-                    <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
-                    <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
-                    @endauth
+
+                        @else
+                        <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
+                        
+                        <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
+                        @endauth
                 </div>
             </div>
 
@@ -181,25 +178,20 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-
-            @foreach ($nav_links as $nav_link)
-                
-                <x-jet-responsive-nav-link href="{{ $nav_link['route'] }}" :active="$nav_link['active']">
-                    {{ __($nav_link['name']) }}
-                </x-jet-responsive-nav-link>
-
+            @foreach($nav_links as $nav_link)
+            <x-jet-responsive-nav-link href="{{ $nav_link['route']  }}" :active="$nav_link['active'] ">
+                {{$nav_link['name']  }}
+            </x-jet-responsive-nav-link>
             @endforeach
-
+       
         </div>
 
         <!-- Responsive Settings Options -->
-
         @auth
-            
             <div class="pt-4 pb-1 border-t border-gray-200">
                 <div class="flex items-center px-4">
                     @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
-                        <div class="shrink-0 mr-3">
+                        <div class="flex-shrink-0 mr-3">
                             <img class="h-10 w-10 rounded-full object-cover" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
                         </div>
                     @endif
@@ -213,25 +205,21 @@
                 <div class="mt-3 space-y-1">
                     <!-- Account Management -->
                     <x-jet-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
-                        Perfil
+                       Perfil
                     </x-jet-responsive-nav-link>
-
-                    @can('Leer Cursos')
-
+                    @can('Leer cursos')
                         <x-jet-responsive-nav-link href="{{ route('instructor.courses.index') }}" :active="request()->routeIs('instructor.courses.index')">
                             Instructor
                         </x-jet-responsive-nav-link>
-                        
+
                     @endcan
-
-                    @can('Ver Dashboard')
-
-                        <x-jet-responsive-nav-link href="{{ route('admin.home') }}" :active="request()->routeIs('admin.home')">
+                    @can('Ver dashboard')
+                        <x-jet-responsive-nav-link href="{{ route('admin.home') }}" :active="request()->routeIs('instructor.courses.index')">
                             Administrador
                         </x-jet-responsive-nav-link>
-                    
-                    @endcan
 
+                    @endcan
+                   
                     @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                         <x-jet-responsive-nav-link href="{{ route('api-tokens.index') }}" :active="request()->routeIs('api-tokens.index')">
                             {{ __('API Tokens') }}
@@ -239,11 +227,12 @@
                     @endif
 
                     <!-- Authentication -->
-                    <form method="POST" action="{{ route('logout') }}" x-data>
+                    <form method="POST" action="{{ route('logout') }}">
                         @csrf
 
                         <x-jet-responsive-nav-link href="{{ route('logout') }}"
-                                    @click.prevent="$root.submit();">
+                                    onclick="event.preventDefault();
+                                        this.closest('form').submit();">
                             {{ __('Log Out') }}
                         </x-jet-responsive-nav-link>
                     </form>
@@ -280,15 +269,12 @@
                     @endif
                 </div>
             </div>
-        
-        @else
-
+            @else
             <div class="py-1 border-t border-gray-200">
-                <x-jet-responsive-nav-link href="{{ route('login') }}" :active="request()->routeIs('login')">
+                <x-jet-responsive-nav-link href="{{ route('login') }}  }}" :active="request()->routeIs('login') ">
                     Login
                 </x-jet-responsive-nav-link>
-
-                <x-jet-responsive-nav-link href="{{ route('register') }}" :active="request()->routeIs('register')">
+                <x-jet-responsive-nav-link href="{{ route('register') }}" :active="request()->routeIs('register') ">
                     Register
                 </x-jet-responsive-nav-link>
             </div>

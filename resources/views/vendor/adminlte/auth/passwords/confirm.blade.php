@@ -46,10 +46,9 @@
                 @csrf
 
                 <div class="input-group">
-                    <input id="password" type="password" name="password"
+                    <input id="password" type="password" name="password" autocomplete="current-password"
                            class="form-control @error('password') is-invalid @enderror"
                            placeholder="{{ __('adminlte::adminlte.password') }}" required autofocus>
-
                     <div class="input-group-append">
                         <button type="submit" class="btn">
                             <i class="fas fa-arrow-right text-muted"></i>

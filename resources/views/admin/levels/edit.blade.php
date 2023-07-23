@@ -3,30 +3,31 @@
 @section('title', 'TEA')
 
 @section('content_header')
-    <h1>TEA</h1>
+    <h1>TEA admin panel.</h1>
 @stop
 
 @section('content')
 
     @if (session('info'))
-        <div class="alert alert-success">
-            {{session('info')}}
-        </div>
+    <div class="alert alert-success">
+        {{session('info')}}
+    </div>
     @endif
-
     <div class="card">
         <div class="card-body">
-            {!! Form::model($level, ['route' => ['admin.levels.update', $level], 'method' => 'put']) !!}
+            {!! Form::model($level,['route' =>['admin.levels.update',$level],'method'=>'put']) !!}
             <div class="form-group">
                 {!! Form::label('name', 'Nombre') !!}
-                {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el nombre del nivel']) !!}
-
+                {!! Form::text('name', null, ['class' =>'form-control','placeholder'=>'Ingrese el nombre del nivel']) !!}
+                
                 @error('name')
-                    <span class="text-danger">{{$message}}</span>
+                    <spain class="text-danger">{{$message}}</spain>
                 @enderror
+            
             </div>
 
-            {!! Form::submit('Actualizar Nivel', ['class' => 'btn btn-primary']) !!}
+            {!! Form::submit('Actualizar categoria', ['class'=> 'btn btn-primary']) !!}
+            
             {!! Form::close() !!}
         </div>
     </div>
@@ -39,3 +40,4 @@
 @section('js')
     <script> console.log('Hi!'); </script>
 @stop
+

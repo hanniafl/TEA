@@ -2,11 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-
 use App\Models\Level;
-
 class LevelSeeder extends Seeder
 {
     /**
@@ -16,8 +13,9 @@ class LevelSeeder extends Seeder
      */
     public function run()
     {
+        //
         Level::create([
-            'name' => 'Nivel basico'
+            'name' => 'Nivel básico'
         ]);
 
         Level::create([

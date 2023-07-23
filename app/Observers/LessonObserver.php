@@ -1,10 +1,8 @@
 <?php
 
 namespace App\Observers;
-
 use App\Models\Lesson;
 use Illuminate\Support\Facades\Storage;
-
 class LessonObserver
 {
     public function creating(Lesson $lesson){
@@ -22,6 +20,7 @@ class LessonObserver
         }
     }
 
+
     public function updating(Lesson $lesson){
         $url = $lesson->url;
         $platform_id = $lesson->platform_id;
@@ -38,7 +37,7 @@ class LessonObserver
     }
 
     public function deleting(Lesson $lesson){
-        if ($lesson->resource){
+        if($lesson->resource){
             Storage::delete($lesson->resource->url);
             $lesson->resource->delete();
         }

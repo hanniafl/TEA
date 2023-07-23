@@ -1,9 +1,8 @@
-//Slug Automatico
-
+//Slug automático
 document.getElementById("title").addEventListener('keyup', slugChange);
 
 function slugChange(){
-
+    
     title = document.getElementById("title").value;
     document.getElementById("slug").value = slug(title);
 
@@ -17,9 +16,6 @@ function slug (str) {
     replace(/^-|-$/g, '');
     return $slug.toLowerCase();
 }
-
-// CKEDITOR
-
 ClassicEditor
     .create( document.querySelector( '#description' ), {
         toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'blockQuote' ],
@@ -35,17 +31,16 @@ ClassicEditor
         console.log( error );
     } );
 
-//Cambiar Imagen
+     //Cambiar imagen
+    document.getElementById("file").addEventListener('change', cambiarImagen);
 
-document.getElementById("file").addEventListener('change', cambiarImagen);
+    function cambiarImagen(event){
+        var file = event.target.files[0];
 
-function cambiarImagen(event){
-    var file = event.target.files[0];
+        var reader = new FileReader();
+        reader.onload = (event) => {
+            document.getElementById("picture").setAttribute('src', event.target.result); 
+        };
 
-    var reader = new FileReader();
-    reader.onload = (event) => {
-        document.getElementById("picture").setAttribute('src', event.target.result);
-    };
-
-    reader.readAsDataURL(file);
-}
+        reader.readAsDataURL(file);
+    }

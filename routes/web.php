@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CourseController;
-
 use App\Http\Livewire\CourseStatus;
+use Illuminate\Routing\RouteGroup;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,20 +19,15 @@ use App\Http\Livewire\CourseStatus;
 
 Route::get('/', HomeController::class)->name('home');
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});
 
-Route::get('cursos', [CourseController::class, 'index'])->name('courses.index');
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
 
-Route::get('cursos/{course}', [CourseController::class, 'show'])->name('courses.show');
+Route::get('cursos',[CourseController::class,'index'])->name('courses.index');
 
-Route::post('courses/{course}/enrolled', [CourseController::class, 'enrolled'])->middleware('auth')->name('courses.enrolled');
+Route::get('cursos/{course}',[CourseController::class,'show'])->name('courses.show');
 
-Route::get('course-status/{course}', CourseStatus::class)->name('courses.status')->middleware('auth');
+Route::post('courses/{course}/enrolled',[CourseController::class,'enrolled'])->middleware('auth')->name('courses.enrolled');
+
+Route::get('courses-status/{course}', CourseStatus::class)->name('courses.status')->middleware('auth');

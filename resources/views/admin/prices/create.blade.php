@@ -9,24 +9,26 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            {!! Form::open(['route' => 'admin.prices.store']) !!}
+            {!! Form::open(['route' =>'admin.prices.store']) !!}
             <div class="form-group">
                 {!! Form::label('name', 'Nombre') !!}
-                {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el nombre del precio']) !!}
+                {!! Form::text('name', null, ['class' =>'form-control','placeholder'=>'Ingrese el nombre del nivel']) !!}
+                
                 @error('name')
-                <span class="text-danger">{{$message}}</span>
+                    <spain class="text-danger">{{$message}}</spain>
                 @enderror
+            
             </div>
-
             <div class="form-group">
-                {!! Form::label('value', 'Valor:') !!}
-                {!! Form::number('value',null, ['class' => 'form-control', 'placeholder' => 'Ingrese el valor del precio']) !!}
-                @error('name')
-                <span class="text-danger">{{$message}}</span>
+                {!! Form::label('value', 'Valor') !!}
+                {!! Form::number('value', null, ['class' =>'form-control','placeholder'=>'Ingrese el valor del curso']) !!}
+                @error('value')
+                    <spain class="text-danger">{{$message}}</spain>
                 @enderror
             </div>
 
-                {!! Form::submit('Crear nuevo precio', ['class' => 'btn btn-primary']) !!}
+            {!! Form::submit('Crear nuevo precio', ['class'=> 'btn btn-primary']) !!}
+            
             {!! Form::close() !!}
         </div>
     </div>
@@ -39,3 +41,4 @@
 @section('js')
     <script> console.log('Hi!'); </script>
 @stop
+

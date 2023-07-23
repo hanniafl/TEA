@@ -3,26 +3,27 @@
 @section('title', 'TEA')
 
 @section('content_header')
-    <h1>Crear nueva categoria</h1>
+    <h1>Crear nueva categoria.</h1>
 @stop
 
 @section('content')
+    
     <div class="card">
         <div class="card-body">
-            {!! Form::open(['route' => 'admin.categories.store']) !!}
-                <div class="form-group">
-                    {!! Form::label('name', 'Nombre') !!}
-                    {!! Form::text('name',null, ['class' => 'form-control', 'placeholder' => 'Ingrese el nombre de la categoria']) !!}
+            {!! Form::open(['route' =>'admin.categories.store']) !!}
+            <div class="form-group">
+                {!! Form::label('name', 'Nombre') !!}
+                {!! Form::text('name', null, ['class' =>'form-control','placeholder'=>'Ingrese el nombre de la categoria']) !!}
+                
+                @error('name')
+                    <spain class="text-danger">{{$message}}</spain>
+                @enderror
+            
+            </div>
 
-                    @error('name')
-                        <span class="text-danger">{{$message}}</span>
-                        
-                    @enderror
-                </div>
-
-                {!! Form::submit('Crear categoria', ['class' => 'btn btn-primary']) !!}
-
-            </form>
+            {!! Form::submit('Crear categoria', ['class'=> 'btn btn-primary']) !!}
+            
+            {!! Form::close() !!}
         </div>
     </div>
 @stop

@@ -1,16 +1,10 @@
 @extends('adminlte::components.form.input-group-component')
 
-{{-- Set errors bag internallly --}}
-
-@php($setErrorsBag($errors ?? null))
-
-{{-- Set input group item section --}}
-
 @section('input_group_item')
 
     {{-- Input Date --}}
     <input id="{{ $id }}" name="{{ $name }}" data-target="#{{ $id }}" data-toggle="datetimepicker"
-        {{ $attributes->merge(['class' => $makeItemClass()]) }}>
+        {{ $attributes->merge(['class' => $makeItemClass($errors->first($errorKey))]) }}>
 
 @overwrite
 
@@ -22,12 +16,6 @@
     $(() => {
         let usrCfg = _AdminLTE_InputDate.parseCfg( @json($config) );
         $('#{{ $id }}').datetimepicker(usrCfg);
-
-        // Add support to auto display the old submitted value or values in case
-        // of validation errors.
-
-        let value = @json($getOldValue($errorKey, $attributes->get('value')));
-        $('#{{ $id }}').val(value || "");
     })
 
 </script>

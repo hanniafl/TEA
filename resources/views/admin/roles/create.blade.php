@@ -3,21 +3,23 @@
 @section('title', 'TEA')
 
 @section('content_header')
-    <h1>Crear Nuero Rol</h1>
+    <h1>Crear nuevo rol</h1>
 @stop
 
 @section('content')
-    <div class="card">
-        <div class="card-body">
-            {!! Form::open(['route' => 'admin.roles.store']) !!}
-        
-                @include('admin.roles.partials.form')
+            <div class="card">
+                <div class="card-body">
+                    {!! Form::open(['route' => 'admin.roles.store']) !!}
 
-                {!! Form::submit('Crear Role', ['class' => 'btn btn-primary mt-2']) !!}
+                        @include('admin.roles.partials.form')
 
-            {!! Form::close() !!}
-        </div>
-    </div>
+
+                    {!! Form::submit('Crear Rol',['class'=>'btn btn-primary mt-2']) !!}
+
+
+                    {!! Form::close() !!}
+                </div>
+            </div>
 @stop
 
 @section('css')

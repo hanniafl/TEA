@@ -2,9 +2,9 @@
 
 namespace App\Policies;
 
+use App\Models\Review;
 use App\Models\User;
 use App\Models\Course;
-use App\Models\Review;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class CoursePolicy
@@ -22,39 +22,43 @@ class CoursePolicy
     }
 
     public function enrolled(User $user, Course $course){
+
         return $course->students->contains($user->id);
     }
-
+//proteger ruta
     public function published(?User $user, Course $course){
-        if($course->status == 3){
+      
+        if ($course->status==3){
             return true;
         }else{
-            return false;
+           return false;
         }
     }
 
-    public function dicatated(User $user, Course $course){
-        if($course->user_id == $user->id){
+    public function dicataded(User $user, Course $course){
+        if($course->user_id ==$user->id){
             return true;
-        }else {
+        }else{
             return false;
         }
     }
 
     public function revision(User $user, Course $course){
-        if ($course->status == 2) {
+        if($course->status ==2){
             return true;
         }else{
             return false;
         }
+
     }
 
     public function valued(User $user, Course $course){
-        if (Review::where('user_id', $user->id)->where('course_id', $course->id)->count()) {
+        if(Review::where('user_id',$user->id)->where('course_id',$course->id)->count()){
             return false;
+
         }else{
             return true;
         }
     }
-}
 
+}

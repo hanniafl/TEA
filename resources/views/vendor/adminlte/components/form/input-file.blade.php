@@ -1,18 +1,12 @@
 @extends('adminlte::components.form.input-group-component')
 
-{{-- Set errors bag internallly --}}
-
-@php($setErrorsBag($errors ?? null))
-
-{{-- Set input group item section --}}
-
 @section('input_group_item')
 
     <div class="custom-file">
 
         {{-- Custom file input --}}
         <input type="file" id="{{ $id }}" name="{{ $name }}"
-            {{ $attributes->merge(['class' => $makeItemClass()]) }}>
+            {{ $attributes->merge(['class' => $makeItemClass($errors->first($errorKey))]) }}>
 
         {{-- Custom file label --}}
         <label class="custom-file-label text-truncate" for="{{ $id }}"
@@ -30,9 +24,7 @@
 @push('js')
 <script>
 
-    $(() => {
-        bsCustomFileInput.init();
-    })
+    $(() => {bsCustomFileInput.init();})
 
 </script>
 @endpush

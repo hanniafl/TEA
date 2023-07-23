@@ -16,7 +16,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::all();
-        return view('admin.categories.index', compact('categories'));
+        return view('admin.categories.index',compact('categories'));
     }
 
     /**
@@ -38,12 +38,12 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|unique:categories'
+            'name'=>'required|unique:categories'
         ]);
 
         $category = Category::create($request->all());
 
-        return redirect()->route('admin.categories.edit', $category)->with('info', 'La categoria se creo con exito');
+        return redirect()->route('admin.categories.edit',$category)->with('info','La categoria se creo con exito');
     }
 
     /**
@@ -54,7 +54,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        return view('admin.categories.show', compact('category'));
+        return view('admin.categories.show',compact('category'));
     }
 
     /**
@@ -65,7 +65,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('admin.categories.edit', compact('category'));
+        return view('admin.categories.edit',compact('category'));
     }
 
     /**
@@ -75,14 +75,15 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,Category $category)
+    public function update(Request $request, Category $category)
     {
         $request->validate([
-            'name' => 'required|unique:categories,name,' . $category->id
+            'name'=>'required|unique:categories,name,'. $category->id
         ]);
 
         $category->update($request->all());
-        return redirect()->route('admin.categories.edit', $category)->with('info', 'La categoria se actualizo con exito');
+
+        return redirect()->route('admin.categories.edit',$category)->with('info','La categoria se actualizo con exito');
     }
 
     /**
@@ -94,7 +95,6 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-        return redirect()->route('admin.categories.index')->with('info', 'La categoria se elimino con exito');
-
+        return redirect()->route('admin.categories.index')->with('info','La categoria se elimino con exito');
     }
 }

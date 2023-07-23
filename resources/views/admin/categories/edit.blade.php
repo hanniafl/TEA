@@ -3,33 +3,33 @@
 @section('title', 'TEA')
 
 @section('content_header')
-    <h1>Editar categoria</h1>
+    <h1>Editar categoria.</h1>
 @stop
 
 @section('content')
-
+    
     @if (session('info'))
         <div class="alert alert-success">
             {{session('info')}}
-        </div>        
+        </div>
     @endif
 
     <div class="card">
         <div class="card-body">
-            {!! Form::model($category, ['route' => ['admin.categories.update', $category], 'method' => 'put']) !!}
-                <div class="form-group">
-                    {!! Form::label('name', 'Nombre') !!}
-                    {!! Form::text('name',null, ['class' => 'form-control', 'placeholder' => 'Ingrese el nombre de la categoria']) !!}
+            {!! Form::model($category,['route' =>['admin.categories.update',$category], 'method'=>'put']) !!}
+            <div class="form-group">
+                {!! Form::label('name', 'Nombre') !!}
+                {!! Form::text('name', null, ['class' =>'form-control','placeholder'=>'Ingrese el nombre de la categoria']) !!}
+                
+                @error('name')
+                    <spain class="text-danger">{{$message}}</spain>
+                @enderror
+            
+            </div>
 
-                    @error('name')
-                        <span class="text-danger">{{$message}}</span>
-                        
-                    @enderror
-                </div>
-
-                {!! Form::submit('Actualizar categoria', ['class' => 'btn btn-primary']) !!}
-
-            </form>
+            {!! Form::submit('Actualizar categoria', ['class'=> 'btn btn-primary']) !!}
+            
+            {!! Form::close() !!}
         </div>
     </div>
 @stop

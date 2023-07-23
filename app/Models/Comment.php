@@ -8,21 +8,22 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
     use HasFactory;
-
     protected $guarded = ['id'];
 
     public function commentable(){
         return $this->morphTo();
     }
 
-    //Relacion uno a muchos inversa
+
+    //relacion uno a muchos inversa
+
     public function user(){
         return $this->belongsTo('App\Models\User');
     }
 
-    //Realcion uno a muchos polimorfica
+    //Relacion uno a muchos polimorfica
 
-    public function cooments(){
+    public function comments(){
         return $this->morphMany('App\Models\Comment', 'commentable');
     }
 

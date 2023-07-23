@@ -8,10 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Observation extends Model
 {
     use HasFactory;
+    protected $fillable = ['body','course_id'];
 
-    protected $fillable = ['body', 'course_id'];
+    //Relacion uno a uno inversa 
 
-    //Relacion uno a uno inversa
     public function course(){
         return $this->belongsTo('App\Models\Course');
     }
