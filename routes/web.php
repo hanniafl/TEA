@@ -6,6 +6,8 @@ use App\Http\Controllers\CourseController;
 use App\Http\Livewire\CourseStatus;
 use Illuminate\Routing\RouteGroup;
 
+use App\Http\Controllers\BotManController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,3 +33,5 @@ Route::get('cursos/{course}',[CourseController::class,'show'])->name('courses.sh
 Route::post('courses/{course}/enrolled',[CourseController::class,'enrolled'])->middleware('auth')->name('courses.enrolled');
 
 Route::get('courses-status/{course}', CourseStatus::class)->name('courses.status')->middleware('auth');
+
+Route::match(['get', 'post'], 'botman', [BotManController::class, "handle"]);
