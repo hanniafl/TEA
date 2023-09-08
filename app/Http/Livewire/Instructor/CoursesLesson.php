@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Instructor;
 
 use Livewire\Component;
+<<<<<<< Updated upstream
 use App\Models\Section;
 use App\Models\Lesson;
 use App\Models\Platform;
@@ -23,10 +24,16 @@ class CoursesLesson extends Component
         $this->platforms=Platform::all();
          $this->lesson = new Lesson();
     }
+=======
+
+class CoursesLesson extends Component
+{
+>>>>>>> Stashed changes
     public function render()
     {
         return view('livewire.instructor.courses-lesson');
     }
+<<<<<<< Updated upstream
 
     public function edit(Lesson $lesson){
         $this->resetValidation();
@@ -80,4 +87,6 @@ class CoursesLesson extends Component
         $lesson->delete();
         $this->section = Section::find($this->section->id);
     }
+=======
+>>>>>>> Stashed changes
 }

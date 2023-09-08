@@ -1,4 +1,5 @@
 <div>
+<<<<<<< Updated upstream
     @foreach ($section->lessons as $item)
 
         <article class="card mt-4" x-data="{open: false}">
@@ -118,4 +119,7 @@
             </div>
         </article>
     </div>
+=======
+    {{-- Be like water. --}}
+>>>>>>> Stashed changes
 </div>
