@@ -15,7 +15,7 @@
 
     <div class="card">
         <div class="card-header">
-            <a href="{{route('admin.roles.create')}}">Crear curso</a>
+            <a href="{{route('admin.roles.create')}}">Crear rol</a>
         </div>
         <div class="card-body">
             <table class="table table-striped">
