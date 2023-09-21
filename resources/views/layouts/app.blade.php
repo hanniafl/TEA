@@ -18,13 +18,7 @@
 
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
-        <script>
-            var botmanWidget={
-                aboutText:"Bienvenido",
-                introMessage:"Hola, By TEA"
-            }
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js"></script>
+       
     </head>
     <body class="font-sans antialiased">
         <x-jet-banner />
