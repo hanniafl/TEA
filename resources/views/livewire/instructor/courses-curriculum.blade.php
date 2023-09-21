@@ -42,19 +42,16 @@
                       @livewire('instructor.courses-lesson', ['section' => $item], key($item->id))
                     
                     </div>
-<<<<<<< Updated upstream
                 @endif
             </div>
 
         </article>
-=======
                 </header>
                 <div>
                     @livewire('instructor.courses-lesson', ['section' => $item], key($item->id))
                 </div>
-            @endif
+                
     </article>
->>>>>>> Stashed changes
         
     @endforeach
 
