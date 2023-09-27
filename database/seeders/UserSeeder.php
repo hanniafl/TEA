@@ -21,6 +21,6 @@ class UserSeeder extends Seeder
         ]);
         //metodo por permissions
         $user->assignRole('Admin');
-        User::factory(99)->create();
+        User::factory(19)->create();
     }
 }
