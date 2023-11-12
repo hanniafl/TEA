@@ -3,8 +3,8 @@
     <section class="bg-cover" style="background-image: url({{asset('img/home/fondo.jpg')}})">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-36">
             <div class="w-full md:w-3/4 lg:w-1/2">
-            <h1 class="text-white font-fold text-4xl ">Domina la tecnologia web con TEA</h1>
-            <p class="text-white text-lg mt-2 mb-4"  > En TEA encontraras cursos, manuaes y articulos que te ayudaran a convertirte en un profesional del desarrollo web </p>
+            <h1 class="text-white font-fold text-4xl ">Domina la tecnología con ANYCOURSE</h1>
+            <p class="text-white text-lg mt-2 mb-4"  > En ANYCOURSE encontraras cursos que te ayudaran a convertirte en un profesional de la programación </p>
             
        @livewire('search')
         
@@ -92,8 +92,8 @@
 
         <script>
             var botmanWidget={
-                aboutText:"Bienvenido",
-                introMessage:"Hola, By TEA"
+                aboutText:"",
+                introMessage:"Bienvenido a ANYCOURSE! <br>Descubre lo que puedes hacer <br>Escribe Hola para comenzar"
             }
         </script>
         <script src="https://cdn.jsdelivr.net/npm/botman-web-widget@0/build/js/widget.js"></script>
